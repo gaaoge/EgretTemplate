@@ -1,0 +1,25 @@
+{
+	"groups": [
+		{
+			"name": "app.MainUI",
+			"keys": ""
+		}
+	],
+	"resources": [
+		{
+			"name": "share-icon_png",
+			"type": "image",
+			"url": "assets/share-icon.png"
+		},
+		{
+			"name": "share-notice_png",
+			"type": "image",
+			"url": "assets/share-notice.png"
+		},
+		{
+			"name": "request-icon_png",
+			"type": "image",
+			"url": "assets/request-icon.png"
+		}
+	]
+}

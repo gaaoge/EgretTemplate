@@ -1,0 +1,7 @@
+.DS_Store
+.idea
+.wing
+bin-debug
+bin-release
+node_modules
+assets_tinypng
