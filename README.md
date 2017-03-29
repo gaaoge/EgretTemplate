@@ -10,5 +10,4 @@ $ npm install -g vue-cli
 $ vue init gaaoge/EgretTemplate my-project
 $ cd my-project
 $ npm install 或 yarn
-$ npm run dev
 ```
