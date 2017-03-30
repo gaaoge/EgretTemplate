@@ -9,6 +9,7 @@ module common {
     export class MovieClip extends eui.Component {
 
         public mc: egret.MovieClip;
+        public mcName: string = '';
         public playTimes: number = -1;
         public stopFrame: number = 0;
         public autoPlay: boolean = true;
@@ -36,7 +37,7 @@ module common {
             if (!this.mcData || !this.mcTexture) return;
 
             var mcFactory = new egret.MovieClipDataFactory(this.mcData, this.mcTexture);
-            this.mc = new egret.MovieClip(mcFactory.generateMovieClipData());
+            this.mc = new egret.MovieClip(mcFactory.generateMovieClipData(this.mcName));
             this.addChild(this.mc);
 
             if (this.autoPlay) {
