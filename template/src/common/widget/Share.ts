@@ -10,6 +10,7 @@ module common {
         public static show(callback?: any): void {
             if (!NewsAppClient.isNewsApp()) {
                 WidgetContainer.getInstance().addChild(new common.ShareUI());
+                NewsAppClient.Callbacks.afterShare = [callback];
             } else {
                 NewsAppClient.share(callback);
             }

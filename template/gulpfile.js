@@ -15,7 +15,7 @@ const path = {
 };
 
 gulp.task('tinypng', function () {
-    return gulp.src(path.build + 'resource/assets/**/*.{png,jpg,jpeg}')
+    return gulp.src('resource/assets/**/*.{png,jpg,jpeg}')
         .pipe(tinypng({
             key: '6-qmxQevyQCCYb-gqGTMnF6LTE8Dzo3j',
             sigFile: 'assets_tinypng/.sigfile',
