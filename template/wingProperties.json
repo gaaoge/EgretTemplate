@@ -7,7 +7,7 @@
 			}
 		],
 		"ignoreList": [
-			""
+			"node_modules"
 		]
 	},
 	"theme": "resource/default.thm.json",

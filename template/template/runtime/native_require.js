@@ -14,6 +14,7 @@ var game_file_list = [
 	"libs/polyfill/promise.js",
 	"bin-debug/common/component/Component.js",
 	"bin-debug/common/utils/StatisticUtils.js",
+	"bin-debug/common/component/Audio.js",
 	"bin-debug/app/MainUI.js",
 	"bin-debug/common/component/DragonBones.js",
 	"bin-debug/common/component/DragonMovie.js",
