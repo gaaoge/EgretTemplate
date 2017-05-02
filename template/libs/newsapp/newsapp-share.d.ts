@@ -4,7 +4,7 @@
  *
  */
 
-declare module NewsAppShare {
+declare module NewsappShare {
 
     var shareData: any;
     function update(data: any): void;

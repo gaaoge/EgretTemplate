@@ -54,18 +54,18 @@ module common {
                 this.request.send(this.config.params);
                 return;
             } else if (this.config.encrypt == 'trashId') {
-                NewsAppClient.trashId((data: any) => {
+                NewsappClient.trashId((data: any) => {
                     this.config.params = this.config.params || {};
                     this.config.params.deviceId = JSON.stringify(data);
                     this.config.params.deviceType = data.id_ver.replace(/_.*/g, '').toLowerCase();
 
-                    NewsAppClient.encrypt(JSON.stringify(this.config.params), (params: string) => {
+                    NewsappClient.encrypt(JSON.stringify(this.config.params), (params: string) => {
                         this.request.open(this.config.url, egret.HttpMethod.POST);
                         this.request.send(params);
                     });
                 });
             } else {
-                NewsAppClient.encrypt(JSON.stringify(this.config.params), (params: string) => {
+                NewsappClient.encrypt(JSON.stringify(this.config.params), (params: string) => {
                     this.request.open(this.config.url, egret.HttpMethod.POST);
                     this.request.send(params);
                 });

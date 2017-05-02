@@ -116,5 +116,12 @@ module common {
 
             return now >= start && now <= end;
         }
+
+        //从列表中随机选择一部分
+        public static randomList(list: any[], count: number): any[] {
+            return list.sort(() => {
+                return Math.random() > 0.5 ? -1 : 1;
+            }).splice(Math.floor(Math.random() * (list.length - count)), count);
+        }
     }
 }

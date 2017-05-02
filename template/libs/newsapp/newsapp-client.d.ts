@@ -4,9 +4,9 @@
  *
  */
 
-declare module NewsAppClient {
+declare module NewsappClient {
 
-    function isNewsApp(): void;
+    var isNewsapp: boolean;
     function protocol(action: string): void;
     function login(callback?: any): void;
     function userInfo(callback: any): void;
@@ -17,6 +17,6 @@ declare module NewsAppClient {
     function trashId(callback: any): void;
     function copy(text: string): void;
     function pushView(text: string): void;
-    function open(path?: string): void;
+    function newsapp(path?: string): void;
     var Callbacks: any;
 }

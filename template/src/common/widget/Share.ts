@@ -8,11 +8,11 @@ module common {
     export class Share {
 
         public static show(callback?: any): void {
-            if (!NewsAppClient.isNewsApp()) {
+            if (!NewsappClient.isNewsapp) {
                 WidgetContainer.getInstance().addChild(new common.ShareUI());
-                NewsAppClient.Callbacks.afterShare = [callback];
+                NewsappClient.Callbacks.afterShare = [callback];
             } else {
-                NewsAppClient.share(callback);
+                NewsappClient.share(callback);
             }
         }
     }

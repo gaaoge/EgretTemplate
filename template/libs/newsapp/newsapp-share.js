@@ -1,6 +1,5 @@
-
-(function () {
-    window.NewsAppShare = {
+;(function (window) {
+    window.NewsappShare = {
         shareData: {
             weibo: '',
             title: '',
@@ -40,17 +39,17 @@
         }
     };
 
-    //微信分享设置
+//微信分享设置
     document.addEventListener('WeixinJSBridgeReady', function () {
         WeixinJSBridge.on('menu:share:timeline', function () {
-            WeixinJSBridge.invoke('shareTimeline', NewsAppShare.shareData, function () {
+            WeixinJSBridge.invoke('shareTimeline', window.NewsappShare.shareData, function () {
                 window.__newsapp_share_done();
             });
         });
         WeixinJSBridge.on('menu:share:appmessage', function () {
-            WeixinJSBridge.invoke('sendAppMessage', NewsAppShare.shareData, function () {
+            WeixinJSBridge.invoke('sendAppMessage', window.NewsappShare.shareData, function () {
                 window.__newsapp_share_done();
             });
         });
     }, false);
-} ());
+})(window);
