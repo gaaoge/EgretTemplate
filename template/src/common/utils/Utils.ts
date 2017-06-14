@@ -121,7 +121,7 @@ module common {
         public static randomList(list: any[], count: number): any[] {
             return list.sort(() => {
                 return Math.random() > 0.5 ? -1 : 1;
-            }).splice(Math.floor(Math.random() * (list.length - count)), count);
+            }).slice(Math.floor(Math.random() * (list.length - count)), count);
         }
     }
 }
