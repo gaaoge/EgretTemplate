@@ -17,6 +17,6 @@ declare module NewsappClient {
     function trashId(callback: any): void;
     function copy(text: string): void;
     function pushView(text: string): void;
-    function newsapp(path?: string): void;
+    function open(path?: string): void;
     var Callbacks: any;
 }
