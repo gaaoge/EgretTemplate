@@ -23,5 +23,5 @@
       "default": "gaoge@corp.netease.com"
     }
   },
-  "skipInterpolation": "src/**/*"
+  "skipInterpolation": ["libs/**/*", "resource/**/*", "src/**/*", "template/**/*"]
 }
