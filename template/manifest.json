@@ -1,0 +1,33 @@
+{
+	"initial": [
+		"libs/modules/egret/egret.js",
+		"libs/modules/egret/egret.web.js",
+		"libs/modules/eui/eui.js",
+		"libs/modules/res/res.js",
+		"libs/modules/game/game.js",
+		"libs/modules/tween/tween.js",
+		"libs/modules/dragonBones/dragonBones.js",
+		"libs/promise/promise.js",
+		"libs/newsapp/newsapp.js"
+	],
+	"game": [
+		"bin-debug/common/component/Component.js",
+		"bin-debug/common/utils/Utils.js",
+		"bin-debug/common/component/Audio.js",
+		"bin-debug/app/MainUI.js",
+		"bin-debug/common/component/DragonBones.js",
+		"bin-debug/common/component/MaskGroup.js",
+		"bin-debug/common/component/ModelDialog.js",
+		"bin-debug/common/component/MovieClip.js",
+		"bin-debug/common/component/Swiper.js",
+		"bin-debug/app/OtherUI.js",
+		"bin-debug/common/widget/Loading.js",
+		"bin-debug/common/widget/Request.js",
+		"bin-debug/common/widget/Share.js",
+		"bin-debug/core/AssetAdapter.js",
+		"bin-debug/core/MessageCenter.js",
+		"bin-debug/core/ThemeAdapter.js",
+		"bin-debug/core/WidgetContainer.js",
+		"bin-debug/Main.js"
+	]
+}

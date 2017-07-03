@@ -901,7 +901,7 @@ var egret;
                 tweens.push(tween);
                 if (!Tween._inited) {
                     Tween._lastTime = egret.getTimer();
-                    egret.sys.$ticker.$startTick(Tween.tick, null);
+                    egret.ticker.$startTick(Tween.tick, null);
                     Tween._inited = true;
                 }
             }
@@ -1146,6 +1146,9 @@ var egret;
          * @language zh_CN
          */
         Tween.prototype.setPaused = function (value) {
+            if (this.paused == value) {
+                return this;
+            }
             this.paused = value;
             Tween._register(this, !value);
             return this;
