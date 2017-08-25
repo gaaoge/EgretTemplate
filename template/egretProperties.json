@@ -7,33 +7,42 @@
 		"native": 1,
 		"path": "bin-release"
 	},
-	"egret_version": "5.0.1",
+	"egret_version": "5.0.6",
+	"eui": {
+		"exmlRoot": [
+			"resource/skins"
+		],
+		"themes": [
+			"resource/default.thm.json"
+		],
+		"exmlPublishPolicy": "content"
+	},
 	"modules": [
-      {
-        "name": "egret"
-      },
-      {
-        "name": "eui"
-      },
-      {
-        "name": "res"
-      },
-      {
-        "name": "game"
-      },
-      {
-        "name": "tween"
-      },
-      {
-        "name": "dragonbones"
-      },
-      {
-          "name": "promise",
-          "path": "./libs/promise"
-      },
-      {
-          "name": "newsapp",
-          "path": "./libs/newsapp"
-      }
+		{
+			"name": "egret"
+		},
+		{
+			"name": "eui"
+		},
+		{
+			"name": "res"
+		},
+		{
+			"name": "game"
+		},
+		{
+			"name": "tween"
+		},
+		{
+			"name": "dragonbones"
+		},
+		{
+			"name": "promise",
+			"path": "./libs/promise"
+		},
+		{
+			"name": "newsapp",
+			"path": "./libs/newsapp"
+		}
 	]
 }
