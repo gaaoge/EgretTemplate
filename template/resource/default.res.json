@@ -1,7 +1,7 @@
 {
 	"groups": [
 		{
-			"name": "app.MainUI",
+			"name": "preload",
 			"keys": ""
 		}
 	],

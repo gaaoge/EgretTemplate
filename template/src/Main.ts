@@ -34,26 +34,25 @@ class Main extends eui.UILayer {
         MessageCenter.getInstance().addEventListener(Messages.CHANGE_SCENE, this.onChangeScene, this);
         //监听浏览器前进、后退操作事件
         window.addEventListener('popstate', (e: PopStateEvent) => {
-            if (e.state) {
-                this.changeScene(egret.getDefinitionByName(e.state.sceneClassName), e.state.params);
-            }
+            if (!e.state) return;
+
+            this.changeScene(egret.getDefinitionByName(e.state.sceneClassName), e.state.params);
         }, false);
 
         this.createScene();
     }
 
     private onChangeScene(e: egret.Event): void {
-        var sceneClassName = egret.getQualifiedClassName(e.data.sceneClass);
-
         //处理资源预加载
-        if (RES.getGroupByName(sceneClassName).length > 0 && !RES.isGroupLoaded(sceneClassName)) {
-            new common.Loading({ groupName: sceneClassName }, () => {
+        if (e.data.groupName && RES.getGroupByName(e.data.groupName).length > 0 && !RES.isGroupLoaded(e.data.groupName)) {
+            new common.Loading({ groupName: e.data.groupName }, () => {
                 this.changeScene(e.data.sceneClass, e.data.params);
             }, this).start();
         } else {
             this.changeScene(e.data.sceneClass, e.data.params);
         }
 
+        var sceneClassName = egret.getQualifiedClassName(e.data.sceneClass);
         //处理历史堆栈
         if (e.data.isHistoryReplace) {
             history.replaceState({ sceneClassName: sceneClassName, params: e.data.params }, document.title, location.href);
@@ -69,13 +68,17 @@ class Main extends eui.UILayer {
     }
 
     private createScene(): void {
-        MessageCenter.getInstance().sendMessage(Messages.CHANGE_SCENE, { sceneClass: app.MainUI, isHistoryReplace: true });
-        
+        MessageCenter.getInstance().sendMessage(Messages.CHANGE_SCENE, {
+            sceneClass: app.MainUI,
+            groupName: 'preload',
+            isHistoryReplace: true
+        });
+
         NewsappShare.update({
             title: '',
             desc: '',
             img_url: NewsappShare.getAbsPath('resource/assets/share-icon.png'),
             link: NewsappShare.getAbsPath()
         })
-}
+    }
 }
