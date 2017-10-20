@@ -1,16 +1,18 @@
 {
   "name": "{{name}}",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "{{description}}",
   "author": {
     "name": "{{author}}",
     "email": "{{email}}"
   },
   "devDependencies": {
+    "del": "^3.0.0",
     "gulp": "^3.9.1",
-    "gulp-filter": "^3.0.1",
-    "gulp-replace": "^0.5.4",
+    "gulp-filter": "^5.0.1",
+    "gulp-replace": "^0.6.1",
     "gulp-tinypng-compress": "^1.2.1",
-    "vinyl-ftp": "^0.5.0"
+    "vinyl-ftp": "^0.6.0",
+    "vinyl-paths": "^2.1.0"
   }
 }

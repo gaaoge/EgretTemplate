@@ -6000,8 +6000,8 @@ declare namespace egret {
          * @language zh_CN
          */
         constructor(source: any);
-        static create(type: "arraybuffer", data: ArrayBuffer): BitmapData;
-        static create(type: "base64", data: string): BitmapData;
+        static create(type: "arraybuffer", data: ArrayBuffer, callback?: (bitmapData: BitmapData) => void): BitmapData;
+        static create(type: "base64", data: string, callback?: (bitmapData: BitmapData) => void): BitmapData;
         $dispose(): void;
         private static _displayList;
         static $addDisplayObject(displayObject: DisplayObject, bitmapData: BitmapData | Texture): void;
@@ -9194,7 +9194,7 @@ declare namespace egret {
         audioType?: number;
         screenAdapter?: sys.IScreenAdapter;
         antialias?: boolean;
-        retina?: boolean;
+        canvasScaleFactor?: number;
     }): void;
     /**
      * Refresh the screen display
@@ -10003,10 +10003,6 @@ declare namespace egret.sys {
     }
 }
 declare module egret {
-    /**
-     * 心跳计时器单例
-     */
-    let $ticker: sys.SystemTicker;
     namespace lifecycle {
         type LifecyclePlugin = (context: LifecycleContext) => void;
         /**
@@ -10026,6 +10022,9 @@ declare module egret {
         let onPause: () => void;
         function addLifecycleListener(plugin: LifecyclePlugin): void;
     }
+    /**
+     * 心跳计时器单例
+     */
     let ticker: sys.SystemTicker;
 }
 /**
@@ -10307,6 +10306,10 @@ declare namespace egret.sys {
          * 颜色变换滤镜
          */
         filter: ColorMatrixFilter;
+        /**
+         * 翻转
+         */
+        rotated: boolean;
         /**
          * 绘制一次位图
          */

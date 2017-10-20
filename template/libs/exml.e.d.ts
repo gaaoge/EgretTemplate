@@ -1,20 +1,12 @@
 declare module app{
-	class MainUISkin extends eui.Skin{
-	}
-}
-declare module app{
-	class OtherUISkin extends eui.Skin{
+	class HomeSkin extends eui.Skin{
 	}
 }
 declare module common{
-	class LoadingUISkin extends eui.Skin{
+	class PreloadSkin extends eui.Skin{
 	}
 }
 declare module common{
-	class RequestUISkin extends eui.Skin{
-	}
-}
-declare module common{
-	class ShareUISkin extends eui.Skin{
+	class ShareSkin extends eui.Skin{
 	}
 }

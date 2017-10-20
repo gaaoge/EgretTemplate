@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="common.LoadingUISkin" xmlns:e="http://ns.egret.com/eui">
-	<e:Label id="progress" horizontalCenter="0" verticalCenter="0" textColor="0x000000"/>
-</e:Skin>

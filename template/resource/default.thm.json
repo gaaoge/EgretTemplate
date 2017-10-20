@@ -1,10 +1,8 @@
 {
   "autoGenerateExmlsList": true,
   "exmls": [
-    "resource/skins/app/MainUISkin.exml",
-    "resource/skins/app/OtherUISkin.exml",
-    "resource/skins/common/LoadingUISkin.exml",
-    "resource/skins/common/RequestUISkin.exml",
-    "resource/skins/common/ShareUISkin.exml"
+    "resource/skins/app/HomeSkin.exml",
+    "resource/skins/common/PreloadSkin.exml",
+    "resource/skins/common/ShareSkin.exml"
   ]
 }

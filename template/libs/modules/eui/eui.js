@@ -7831,6 +7831,9 @@ var eui;
                             if (id.match(e) == null) {
                                 egret.$warn(2022, id);
                             }
+                            if (id.match(new RegExp(/ /g)) != null) {
+                                egret.$warn(2022, id);
+                            }
                             if (this.skinParts.indexOf(id) == -1) {
                                 this.skinParts.push(id);
                             }
@@ -23894,9 +23897,6 @@ var eui;
                     case egret.HorizontalAlign.RIGHT:
                         x = width - (columnIndex + 1) * (columnWidth + horizontalGap) + horizontalGap - paddingR;
                         break;
-                    case egret.HorizontalAlign.CENTER:
-                        x = width / 2 - (columnCount * columnWidth + (columnCount - 1) * horizontalGap) / 2 + columnIndex * (columnWidth + horizontalGap);
-                        break;
                     case egret.HorizontalAlign.LEFT:
                         x = columnIndex * (columnWidth + horizontalGap) + paddingL;
                         break;
@@ -23909,9 +23909,6 @@ var eui;
                         break;
                     case egret.VerticalAlign.BOTTOM:
                         y = height - (rowIndex + 1) * (rowHeight + verticalGap) + verticalGap - paddingB;
-                        break;
-                    case egret.VerticalAlign.MIDDLE:
-                        y = height / 2 - (rowCount * rowHeight + (rowCount - 1) * verticalGap) / 2 + rowIndex * (rowHeight + verticalGap);
                         break;
                     default:
                         y = rowIndex * (rowHeight + verticalGap) + paddingT;

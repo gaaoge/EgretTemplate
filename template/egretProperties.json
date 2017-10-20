@@ -7,7 +7,7 @@
 		"native": 1,
 		"path": "bin-release"
 	},
-	"egret_version": "5.0.7",
+	"egret_version": "5.0.9",
 	"eui": {
 		"exmlRoot": [
 			"resource/skins"
@@ -22,27 +22,20 @@
 			"name": "egret"
 		},
 		{
-			"name": "eui"
-		},
-		{
 			"name": "res"
 		},
 		{
 			"name": "game"
 		},
 		{
-			"name": "tween"
+			"name": "eui"
 		},
 		{
-			"name": "dragonbones"
+			"name": "tween"
 		},
 		{
 			"name": "promise",
 			"path": "./libs/promise"
-		},
-		{
-			"name": "newsapp",
-			"path": "./libs/newsapp"
 		}
 	]
 }

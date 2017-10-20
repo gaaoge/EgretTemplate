@@ -9,13 +9,28 @@ const ftp = require('vinyl-ftp');
 const tinypng = require('gulp-tinypng-compress');
 const replace = require('gulp-replace');
 const filter = require('gulp-filter');
+const del = require('del');
+const vinylPaths = require('vinyl-paths');
 
 const path = {
     build: 'bin-release/web/publish/'
 };
 
-gulp.task('tinypng', function () {
-    return gulp.src('resource/assets/**/*.{png,jpg,jpeg}')
+gulp.task('packToAsset', function () {
+    gulp.src(path.build + 'resource/default.res.json')
+        .pipe(replace('packs0', 'assets'))
+        .pipe(gulp.dest(path.build + 'resource'));
+
+    return gulp.src(path.build + 'resource/packs0/**/*')
+        .pipe(vinylPaths(del))
+        .pipe(gulp.dest(path.build + 'resource/assets'));
+});
+
+gulp.task('tinypng', ['packToAsset'], function () {
+    gulp.src(path.build + 'resource/packs0/')
+        .pipe(vinylPaths(del));
+
+    return gulp.src(path.build + 'resource/assets/**/*.{png,jpg,jpeg}')
         .pipe(tinypng({
             key: '6-qmxQevyQCCYb-gqGTMnF6LTE8Dzo3j',
             sigFile: 'assets_tinypng/.sigfile',
@@ -25,7 +40,7 @@ gulp.task('tinypng', function () {
         .pipe(gulp.dest('assets_tinypng'));
 });
 
-gulp.task('tinypng_copy', function () {
+gulp.task('tinypng_copy', ['packToAsset'], function () {
     return gulp.src('assets_tinypng/**/*')
         .pipe(gulp.dest(path.build + 'resource/assets'));
 });
@@ -46,22 +61,24 @@ gulp.task('publish', ['tinypng_copy'], function () {
     const conn = ftp.create({
         host: '220.181.29.249',
         port: '16321',
-        user: 'wangjun2012',
-        password: 'wangjun2012',
+        user: 'newsclient',
+        password: 'newsclient@2017',
         parallel: 5
     });
 
-    const target = filter('index.html', {restore: true});
-    const statistics = '<script src="//analytics.163.com/ntes.js"></script>' +
-        '<script>_ntes_nacc = "mapp";neteaseTracker();</script>' +
-        '<script src="//img1.cache.netease.com/utf8/3g/util/analysis.min.js"></script>' +
-        '<script>_ntes_sps_modelid="' + pkg.name + '";neteaseAnalysis({type:"special",modelid:_ntes_sps_modelid,spst:5});</script>' +
-        '<script>var _hmt=_hmt||[];(function(){var b=document.createElement("script");b.src="//hm.baidu.com/hm.js?7fa45cfaddbf8ba5591da1950285d665";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)})();</script>';
+    const target = filter('index.html', { restore: true });
+    const statistics = [
+        '<script src="//analytics.163.com/ntes.js"></script>',
+        '<script>var _ntes_nacc="mapp";neteaseTracker();</script>',
+        '<script src="//static.ws.126.net/utf8/3g/util/analysis.min.js"></script>',
+        '<script>var _ntes_sps_modelid="' + pkg.name + '";neteaseAnalysis({type:"special",modelid:_ntes_sps_modelid,spst:5});</script>',
+        '<script>var _ntes_ant_projectid="NTM-BXR8M5Z5-1";(function(w,d,s,n) {var f=d.getElementsByTagName(s)[0],k=d.createElement(s);k.async=true;k.src="//static.ws.126.net/utf8/3g/analytics/data1/"+n+".js";f.parentNode.insertBefore(k,f);})(window,document,"script",_ntes_ant_projectid);</script>',
+        '<script>var _hmt=_hmt||[];(function(){var b=document.createElement("script");b.src="//hm.baidu.com/hm.js?7fa45cfaddbf8ba5591da1950285d665";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(b,a)})();</script>',
+    ].join('');
 
     return gulp.src(path.build + '**/*')
         .pipe(target)
         .pipe(replace('<!--statistics-->', statistics))
-        .pipe(replace(/\n.*<\!--.*-->/g, ''))
         .pipe(target.restore)
-        .pipe(conn.dest('activity/' + pkg.name));
+        .pipe(conn.dest('qa/activity/' + pkg.name));
 });

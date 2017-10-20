@@ -1,25 +1,15 @@
 {
-	"groups": [
-		{
-			"name": "preload",
-			"keys": ""
-		}
-	],
+	"groups": [],
 	"resources": [
 		{
 			"name": "share-icon_png",
 			"type": "image",
-			"url": "assets/share-icon.png"
+			"url": "statics/share-icon.png"
 		},
 		{
 			"name": "share-notice_png",
 			"type": "image",
 			"url": "assets/share-notice.png"
-		},
-		{
-			"name": "request-icon_png",
-			"type": "image",
-			"url": "assets/request-icon.png"
 		}
 	]
 }

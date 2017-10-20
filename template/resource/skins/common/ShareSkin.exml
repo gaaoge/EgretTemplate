@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="common.ShareUISkin" xmlns:e="http://ns.egret.com/eui">
+<e:Skin class="common.ShareSkin" xmlns:e="http://ns.egret.com/eui">
     <e:Rect left="0" right="0" top="0" bottom="0" fillAlpha="0.75" />
     <e:Image source="share-notice_png" right="50" top="30" />
 </e:Skin>

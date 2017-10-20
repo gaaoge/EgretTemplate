@@ -9054,7 +9054,7 @@ var egret;
             _this.height = source.height;
             return _this;
         }
-        BitmapData.create = function (type, data) {
+        BitmapData.create = function (type, data, callback) {
             if (egret.Capabilities.runtimeType === egret.RuntimeType.WEB) {
                 var base64 = "";
                 if (type === "arraybuffer") {
@@ -9082,6 +9082,9 @@ var egret;
                     bitmapData_1.source = img_1;
                     bitmapData_1.height = img_1.height;
                     bitmapData_1.width = img_1.width;
+                    if (callback) {
+                        callback(bitmapData_1);
+                    }
                 };
                 return bitmapData_1;
             }
@@ -9094,7 +9097,11 @@ var egret;
                     buffer = egret.Base64Util.decode(data);
                 }
                 var native_texture = egret_native.Texture.createTextureFromArrayBuffer(buffer);
-                return new BitmapData(native_texture);
+                var bitmapData = new BitmapData(native_texture);
+                if (callback) {
+                    callback(bitmapData);
+                }
+                return bitmapData;
             }
         };
         BitmapData.prototype.$dispose = function () {
@@ -14993,10 +15000,6 @@ var egret;
     })(sys = egret.sys || (egret.sys = {}));
 })(egret || (egret = {}));
 (function (egret) {
-    /**
-     * 心跳计时器单例
-     */
-    egret.$ticker = new egret.sys.SystemTicker();
     var lifecycle;
     (function (lifecycle) {
         /**
@@ -15036,6 +15039,9 @@ var egret;
         }
         lifecycle.addLifecycleListener = addLifecycleListener;
     })(lifecycle = egret.lifecycle || (egret.lifecycle = {}));
+    /**
+     * 心跳计时器单例
+     */
     egret.ticker = new egret.sys.SystemTicker();
 })(egret || (egret = {}));
 if (true) {
@@ -15719,6 +15725,10 @@ var egret;
                  * 颜色变换滤镜
                  */
                 _this.filter = null;
+                /**
+                 * 翻转
+                 */
+                _this.rotated = false;
                 _this.type = 7 /* MeshNode */;
                 _this.vertices = [];
                 _this.uvs = [];
@@ -16515,6 +16525,10 @@ var egret;
                         compositeOp_1 = defaultCompositeOp;
                     }
                 }
+                var bounds_1 = displayObject.$getOriginalBounds();
+                if (bounds_1.width <= 0 || bounds_1.height <= 0) {
+                    return drawCalls_1;
+                }
                 if (filters_1.length == 1 && filters_1[0].type == "colorTransform" && !displayObject.$children) {
                     if (hasBlendMode_1) {
                         context.globalCompositeOperation = compositeOp_1;
@@ -16544,7 +16558,6 @@ var egret;
                 // 获取显示对象的矩形区域
                 var region_1;
                 region_1 = egret.sys.Region.create();
-                var bounds_1 = displayObject.$getOriginalBounds();
                 region_1.updateRegion(bounds_1, displayMatrix_1);
                 // 为显示对象创建一个新的buffer
                 // todo 这里应该计算 region.x region.y
@@ -16593,6 +16606,10 @@ var egret;
                     compositeOp = defaultCompositeOp;
                 }
             }
+            var bounds = displayObject.$getOriginalBounds();
+            if (bounds.width <= 0 || bounds.height <= 0) {
+                return drawCalls;
+            }
             // 获取显示对象的链接矩阵
             var displayMatrix = egret.Matrix.create();
             displayMatrix.copyFrom(displayObject.$getConcatenatedMatrix());
@@ -16602,7 +16619,6 @@ var egret;
             // 获取显示对象的矩形区域
             var region;
             region = egret.sys.Region.create();
-            var bounds = displayObject.$getOriginalBounds();
             region.updateRegion(bounds, displayMatrix);
             // 为显示对象创建一个新的buffer
             // todo 这里应该计算 region.x region.y
@@ -16745,6 +16761,9 @@ var egret;
                 region = egret.sys.Region.create();
                 bounds = displayObject.$getOriginalBounds();
                 region.updateRegion(bounds, displayMatrix);
+            }
+            if (region.width <= 0 || region.height <= 0) {
+                return drawCalls;
             }
             var found = false;
             if (!dirtyList) {
@@ -18052,7 +18071,7 @@ var egret;
              * @language zh_CN
              */
             get: function () {
-                return "5.0.7";
+                return "5.0.9";
             },
             enumerable: true,
             configurable: true
@@ -23137,9 +23156,11 @@ var egret;
          * @language zh_CN
          */
         ByteArray.prototype.readUTFBytes = function (length) {
-            if (!this.validate(length))
+            if (!this.validate(length)) {
                 return;
-            var bytes = new Uint8Array(this.buffer, this.bufferOffset + this._position, length);
+            }
+            var data = this.data;
+            var bytes = new Uint8Array(data.buffer, data.byteOffset + this._position, length);
             this.position += length;
             return this.decodeUTF8(bytes);
         };
