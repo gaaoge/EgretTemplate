@@ -12,11 +12,13 @@ class Component extends eui.Component {
     public constructor() {
         super();
         this.percentWidth = this.percentHeight = 100;
-        this.skinName = this.getDefaultSkinName();
+        this.setDefaultSkinName();
     }
 
-    private getDefaultSkinName(): string {
+    private setDefaultSkinName(): void {
         var className: string = egret.getQualifiedClassName(this);
-        return 'resource/skins/' + className.replace('.', '/') + 'Skin.exml';
+        if (className !== 'Component') {
+            this.skinName = 'resource/skins/' + className.replace('.', '/') + 'Skin.exml';
+        }
     }
 }
