@@ -10,4 +10,5 @@ declare class NewsappShare {
     static update(data: any): void;
     static updateImg(imgUrl: string): void;
     static getAbsPath(url?: string): string;
+    static getshareLink(url?: string): string;
 }
