@@ -7,7 +7,7 @@
 		"native": 1,
 		"path": "bin-release"
 	},
-	"egret_version": "5.0.11",
+	"egret_version": "5.0.12",
 	"eui": {
 		"exmlRoot": [
 			"resource/skins"
@@ -32,6 +32,9 @@
 		},
 		{
 			"name": "tween"
+		},
+		{
+			"name": "dragonbones"
 		},
 		{
 			"name": "promise",

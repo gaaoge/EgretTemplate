@@ -1,4 +1,4 @@
-;(function (window) {
+; (function (window) {
   window.NewsappShare = {
     shareData: {
       weibo: '',
@@ -34,11 +34,20 @@
         return window.location.href.replace(/(\?|#).*/, '')
       }
     },
-    getshareLink (url) {
+    updateShareLink() {
       if (window.NTESAntAnalysis) {
-        return window.NTESAntAnalysis.getShareLink(window.NewsappShare.getAbsPath(url))
+        window.NewsappShare.update({
+          link: window.NTESAntAnalysis.getShareLink(window.NewsappShare.getAbsPath())
+        })
       } else {
-        return window.NewsappShare.getAbsPath(url)
+        window.NewsappShare.update({
+          link: window.NewsappShare.getAbsPath()
+        });
+        window.addEventListener('NTMReady', () => {
+          window.NewsappShare.update({
+            link: window.NTESAntAnalysis.getShareLink(window.NewsappShare.getAbsPath())
+          });
+        });
       }
     }
   }
