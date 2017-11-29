@@ -65,7 +65,7 @@ class App extends eui.UILayer {
         NewsappShare.update({
             title: '分享标题',
             desc: '分享描述',
-            img_url: NewsappShare.getAbsPath('resource/assets/share-icon.png')
+            img_url: 'resource/assets/share-icon.png'
         });
         NewsappShare.updateShareLink();
     }
