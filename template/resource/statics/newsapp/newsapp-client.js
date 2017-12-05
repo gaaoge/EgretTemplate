@@ -209,6 +209,13 @@
     }
 
     /**
+     * 判断是否登录
+     */
+    function isLogin () {
+      return !!(getCookie('S_INFO') || getCookie('S_OINFO'))
+    }
+
+    /**
      * 登录
      * @param {Function} callback 成功回调
      */
@@ -442,10 +449,18 @@
       }
     }
 
+    // 获取cookies
+    function getCookie (name) {
+      var regexp = new RegExp('(?:(?:^|.*;)\\s*' + encodeURIComponent(name).replace(/[-.+*]/g, '\\$&') +
+        '\\s*\\=\\s*([^;]*).*$)|^.*$')
+      return decodeURIComponent(document.cookie.replace(regexp, '$1')) || ''
+    }
+
     return {
       isNewsapp: isNewsapp,
       isAndroid: isAndroid,
       isIos: isIos,
+      isLogin: isLogin,
       login: login,
       userInfo: userInfo,
       device: device,
@@ -476,3 +491,5 @@
     }
   })(Navigator.protocol)
 }(window))
+
+export default window.NewsappClient

@@ -9,6 +9,7 @@ declare class NewsappClient {
     static isNewsapp: boolean;
     static isAndroid: boolean;
     static isIos: boolean;
+    static isLogin(): boolean;
     static login(callback?: any): void;
     static userInfo(callback: any): void;
     static device(callback: any): void;
