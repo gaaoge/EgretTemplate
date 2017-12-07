@@ -10,6 +10,26 @@
 			"name": "share-notice_png",
 			"type": "image",
 			"url": "assets/share-notice.png"
+		},
+		{
+			"name": "share-close_png",
+			"type": "image",
+			"url": "assets/share-close.png"
+		},
+		{
+			"name": "share-qzone_png",
+			"type": "image",
+			"url": "assets/share-qzone.png"
+		},
+		{
+			"name": "share-weibo_png",
+			"type": "image",
+			"url": "assets/share-weibo.png"
+		},
+		{
+			"name": "share-yixin_png",
+			"type": "image",
+			"url": "assets/share-yixin.png"
 		}
 	]
 }

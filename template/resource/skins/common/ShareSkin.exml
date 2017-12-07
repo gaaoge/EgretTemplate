@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="common.ShareSkin" xmlns:e="http://ns.egret.com/eui">
+<e:Skin class="common.ShareSkin" xmlns:e="http://ns.egret.com/eui" xmlns:w="http://ns.egret.com/wing" width="750" height="1206">
     <e:Rect left="0" right="0" top="0" bottom="0" fillAlpha="0.75" />
-    <e:Image source="share-notice_png" right="50" top="30" />
+    <e:Image source="share-notice_png" right="50" top="30" id="notice"  visible="false"/>
+    <e:Group id="panel" bottom="0" left="0" right="0" height="400" visible="false">
+        <e:Group horizontalCenter="0" top="75">
+            <e:Image id="weiboBtn" source="share-weibo_png" />
+            <e:Image id="qzoneBtn" source="share-qzone_png" />
+            <e:Image id="yixinBtn" source="share-yixin_png" />
+            <e:layout>
+                <e:HorizontalLayout horizontalAlign="center" gap="100" paddingTop="0" />
+            </e:layout>
+        </e:Group>
+        <e:Image id="closeBtn" source="share-close_png"  horizontalCenter="0" bottom="80"/>
+    </e:Group>
 </e:Skin>

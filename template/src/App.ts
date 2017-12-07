@@ -58,15 +58,12 @@ class App extends eui.UILayer {
         if (!this.isConfigLoadEnd || !this.isThemeLoadEnd) return;
 
         new Router(this).replace(app.Home);
-        this.shareConfig();
-    }
 
-    private shareConfig(): void {
         NewsappShare.update({
             title: '分享标题',
             desc: '分享描述',
-            img_url: 'resource/assets/share-icon.png'
+            img_url: 'resource/statics/share-icon.png',
+            link: ''
         });
-        NewsappShare.updateShareLink();
     }
 }

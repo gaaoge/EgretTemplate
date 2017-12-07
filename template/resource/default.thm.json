@@ -2,7 +2,6 @@
   "autoGenerateExmlsList": true,
   "exmls": [
     "resource/skins/app/HomeSkin.exml",
-    "resource/skins/common/PreloadSkin.exml",
     "resource/skins/common/ShareSkin.exml"
   ]
 }
