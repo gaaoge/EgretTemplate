@@ -7,67 +7,63 @@
 module common {
     export class Share extends Component {
 
-        private notice: eui.Image;
+        private notice: eui.Group;
         private panel: eui.Group;
         private weiboBtn: eui.Image;
+        private qqBtn: eui.Image;
         private qzoneBtn: eui.Image;
         private yixinBtn: eui.Image;
         private closeBtn: eui.Image;
 
-        private isInApp: boolean;
-
         public constructor() {
             super();
             this.visible = false;
-            this.isInApp = /micromessenger|weibo|qq|yixin/ig.test(navigator.userAgent);
         }
 
         protected createChildren() {
             super.createChildren();
 
-            if (this.isInApp) {
-                this.notice.visible = true;
-                this.addEventListener(egret.TouchEvent.TOUCH_TAP, this.hide, this);
-            } else {
-                this.panel.visible = true;
-                this.weiboBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
-                    window.location.href = NewsappShare.getShareUrl('weibo');
-                }, this);
-                this.qzoneBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
-                    window.location.href = NewsappShare.getShareUrl('qzone');
-                }, this);
-                this.yixinBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
-                    window.location.href = NewsappShare.getShareUrl('yixin');
-                }, this);
-                this.closeBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.hide, this);
-            }
+
+            this.notice.addEventListener(egret.TouchEvent.TOUCH_TAP, this.fadeOut, this);
+
+            this.weiboBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
+                window.location.href = NewsappShare.urls['weibo'];
+            }, this);
+            this.qqBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
+                window.location.href = NewsappShare.urls['qq'];
+            }, this);
+            this.qzoneBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
+                window.location.href = NewsappShare.urls['qzone'];
+            }, this);
+            this.yixinBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
+                window.location.href = NewsappShare.urls['yixin'];
+            }, this);
+            this.closeBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.fadeOut, this);
         }
 
         public show(): void {
-            if (NewsappClient.isNewsapp) {
-                NewsappClient.share();
-                return;
-            }
-
-            egret.Tween.get(this)
-                .call(() => {
-                    this.visible = true;
-                    this.alpha = 0;
-                })
-                .to({ alpha: 1 }, 300, egret.Ease.sineInOut);
-
-            this.isInApp && setTimeout(() => {
-                egret.Tween.get(this)
-                    .to({ alpha: 0 }, 300, egret.Ease.sineInOut)
-                    .call(() => {
-                        this.visible = false;
-                    })
-            }, 2000);
+            NewsappShare.show((isApp) => {
+                if (isApp) {
+                    this.notice.visible = true;
+                    setTimeout(() => {
+                        this.fadeOut()
+                    }, 2000)
+                } else {
+                    this.panel.visible = true;
+                }
+                this.fadeIn()
+            })
         }
 
-        public hide(): void {
-            egret.Tween.removeTweens(this);
-            egret.Tween.get(this)
+        private fadeIn(): void {
+            this.visible = true;
+            this.alpha = 0;
+            egret.Tween.get(this, null, null, true)
+                .to({ alpha: 1 }, 300, egret.Ease.sineInOut);
+        }
+
+        private fadeOut(): void {
+            egret.Tween.get(this, null, null, true)
                 .to({ alpha: 0 }, 300, egret.Ease.sineInOut)
                 .call(() => {
                     this.visible = false;

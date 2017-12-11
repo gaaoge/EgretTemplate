@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e:Skin class="app.HomeSkin" xmlns:e="http://ns.egret.com/eui">
-	<e:Label text="Hello Egret" horizontalCenter="0" textColor="0x000000" size="100" top="50"/>
+<e:Skin class="app.HomeSkin" xmlns:e="http://ns.egret.com/eui" xmlns:common="common.*">
+	<e:Label id="label" text="Hello Egret" horizontalCenter="0" textColor="0x000000" size="100" top="50"/>
+	<common:Share id="share"/>
 </e:Skin>

@@ -1,35 +1,49 @@
 {
-	"groups": [],
+	"groups": [
+		{
+			"keys": "",
+			"name": "preload"
+		},
+		{
+			"keys": "share-close_png,share-notice_png,share-qq_png,share-qzone_png,share-weibo_png,share-yixin_png",
+			"name": "sprite"
+		}
+	],
 	"resources": [
 		{
-			"name": "share-icon_png",
+			"url": "statics/share-icon.png",
 			"type": "image",
-			"url": "statics/share-icon.png"
+			"name": "share-icon_png"
 		},
 		{
-			"name": "share-notice_png",
+			"url": "assets/share-notice.png",
 			"type": "image",
-			"url": "assets/share-notice.png"
+			"name": "share-notice_png"
 		},
 		{
-			"name": "share-close_png",
+			"url": "assets/share-close.png",
 			"type": "image",
-			"url": "assets/share-close.png"
+			"name": "share-close_png"
 		},
 		{
-			"name": "share-qzone_png",
+			"url": "assets/share-weibo.png",
 			"type": "image",
-			"url": "assets/share-qzone.png"
+			"name": "share-weibo_png"
 		},
 		{
-			"name": "share-weibo_png",
+			"url": "assets/share-qq.png",
 			"type": "image",
-			"url": "assets/share-weibo.png"
+			"name": "share-qq_png"
 		},
 		{
-			"name": "share-yixin_png",
+			"url": "assets/share-qzone.png",
 			"type": "image",
-			"url": "assets/share-yixin.png"
+			"name": "share-qzone_png"
+		},
+		{
+			"url": "assets/share-yixin.png",
+			"type": "image",
+			"name": "share-yixin_png"
 		}
 	]
 }

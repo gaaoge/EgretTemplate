@@ -7,6 +7,6 @@
 declare class NewsappShare {
 
     static config(data: any): void;
-    static update(data: any): void;
-    static getShareUrl(type: string): string;
+    static show(fallback: any): void;
+    static urls: String[];
 }
