@@ -20,7 +20,6 @@
 		"bin-debug/App.js",
 		"bin-debug/core/Router.js",
 		"bin-debug/core/ThemeAdapter.js",
-		"bin-debug/utils/NewsappClient.js",
 		"bin-debug/utils/NewsappShare.js",
 		"bin-debug/utils/NewsappStats.js"
 	]

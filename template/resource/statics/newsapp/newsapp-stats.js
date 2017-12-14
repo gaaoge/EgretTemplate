@@ -1,4 +1,4 @@
-;(function (window) {
+;(function () {
   window.NewsappStats = {
     trackView: function (view) {
       if (window['neteaseAnalysis']) {
@@ -44,4 +44,4 @@
       }
     }
   }
-}(window))
+}())
