@@ -27,22 +27,22 @@ module common {
             this.notice.addEventListener(egret.TouchEvent.TOUCH_TAP, this.fadeOut, this);
 
             this.weiboBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
-                window.location.href = NewsappShare.urls['weibo'];
+                window.location.href = window['newsappShare'].getShareUrl('weibo');
             }, this);
             this.qqBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
-                window.location.href = NewsappShare.urls['qq'];
+                window.location.href = window['newsappShare'].getShareUrl('qq');
             }, this);
             this.qzoneBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
-                window.location.href = NewsappShare.urls['qzone'];
+                window.location.href = window['newsappShare'].getShareUrl('qzone');
             }, this);
             this.yixinBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
-                window.location.href = NewsappShare.urls['yixin'];
+                window.location.href = window['newsappShare'].getShareUrl('yixin');
             }, this);
             this.closeBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.fadeOut, this);
         }
 
         public show(): void {
-            NewsappShare.show((isApp) => {
+            window['newsappShare'].show((isApp) => {
                 if (isApp) {
                     this.notice.visible = true;
                     setTimeout(() => {

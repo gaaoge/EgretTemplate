@@ -59,7 +59,7 @@ class App extends eui.UILayer {
 
         new Router(this).replace(app.Home);
 
-        NewsappShare.config({
+        window['newsappShare'].config({
             title: '分享标题',
             desc: '分享描述',
             imgUrl: 'resource/statics/share-icon.png',
