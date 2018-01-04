@@ -7,14 +7,6 @@
 module common {
     export class Share extends Component {
 
-        private notice: eui.Group;
-        private panel: eui.Group;
-        private weiboBtn: eui.Image;
-        private qqBtn: eui.Image;
-        private qzoneBtn: eui.Image;
-        private yixinBtn: eui.Image;
-        private closeBtn: eui.Image;
-
         public constructor() {
             super();
             this.visible = false;
@@ -23,35 +15,15 @@ module common {
         protected createChildren() {
             super.createChildren();
 
-
-            this.notice.addEventListener(egret.TouchEvent.TOUCH_TAP, this.fadeOut, this);
-
-            this.weiboBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
-                window.location.href = window['newsappShare'].getShareUrl('weibo');
-            }, this);
-            this.qqBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
-                window.location.href = window['newsappShare'].getShareUrl('qq');
-            }, this);
-            this.qzoneBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
-                window.location.href = window['newsappShare'].getShareUrl('qzone');
-            }, this);
-            this.yixinBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, () => {
-                window.location.href = window['newsappShare'].getShareUrl('yixin');
-            }, this);
-            this.closeBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.fadeOut, this);
+            this.addEventListener(egret.TouchEvent.TOUCH_TAP, this.fadeOut, this);
         }
 
         public show(): void {
-            window['newsappShare'].show((isApp) => {
-                if (isApp) {
-                    this.notice.visible = true;
-                    setTimeout(() => {
-                        this.fadeOut()
-                    }, 2000)
-                } else {
-                    this.panel.visible = true;
-                }
-                this.fadeIn()
+            window['newsappShare'].show(() => {
+                this.fadeIn();
+                setTimeout(() => {
+                    this.fadeOut();
+                }, 2000);
             })
         }
 

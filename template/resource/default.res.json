@@ -5,7 +5,7 @@
 			"name": "preload"
 		},
 		{
-			"keys": "share-close_png,share-notice_png,share-qq_png,share-qzone_png,share-weibo_png,share-yixin_png",
+			"keys": "share-notice_png",
 			"name": "sprite"
 		}
 	],
@@ -19,31 +19,6 @@
 			"url": "assets/share-notice.png",
 			"type": "image",
 			"name": "share-notice_png"
-		},
-		{
-			"url": "assets/share-close.png",
-			"type": "image",
-			"name": "share-close_png"
-		},
-		{
-			"url": "assets/share-weibo.png",
-			"type": "image",
-			"name": "share-weibo_png"
-		},
-		{
-			"url": "assets/share-qq.png",
-			"type": "image",
-			"name": "share-qq_png"
-		},
-		{
-			"url": "assets/share-qzone.png",
-			"type": "image",
-			"name": "share-qzone_png"
-		},
-		{
-			"url": "assets/share-yixin.png",
-			"type": "image",
-			"name": "share-yixin_png"
 		}
 	]
 }

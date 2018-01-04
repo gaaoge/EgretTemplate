@@ -14,7 +14,7 @@ module app {
             super.createChildren();
 
             this.label.addEventListener(egret.TouchEvent.TOUCH_TAP,()=>{
-                this.share.show()
+                this.share.show();
             } ,this)
         }
     }
