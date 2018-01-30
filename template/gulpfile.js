@@ -13,7 +13,7 @@ const del = require('del');
 const vinylPaths = require('vinyl-paths');
 
 const path = {
-    build: 'bin-release/web/publish/'
+    build: 'bin-release/web/'
 };
 
 gulp.task('packToAsset', function () {
