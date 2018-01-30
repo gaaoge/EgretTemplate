@@ -4,7 +4,7 @@
  *
  */
 
-class App extends eui.UILayer {
+class Main extends eui.UILayer {
 
     private scaleMode: string;
     private isConfigLoadEnd: boolean = false;
@@ -59,11 +59,13 @@ class App extends eui.UILayer {
 
         new Router(this).replace(app.Home);
 
-        window['newsappShare'].config({
-            title: '分享标题',
-            desc: '分享描述',
-            imgUrl: 'resource/statics/share-icon.png',
-            link: ''
-        });
+        if (window['newsappShare']) {
+            window['newsappShare'].config({
+                title: '分享标题',
+                desc: '分享描述',
+                imgUrl: 'resource/statics/share-icon.png',
+                link: ''
+            });
+        }
     }
 }

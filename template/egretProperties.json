@@ -1,13 +1,10 @@
 {
-	"native": {
-		"path_ignore": []
+	"engineVersion": "5.1.5",
+	"compilerVersion": "5.1.5",
+	"target": {
+		"current": "web"
 	},
-	"publish": {
-		"web": 0,
-		"native": 1,
-		"path": "bin-release"
-	},
-	"egret_version": "5.0.13",
+	"template": {},
 	"eui": {
 		"exmlRoot": [
 			"resource/skins"
@@ -15,30 +12,29 @@
 		"themes": [
 			"resource/default.thm.json"
 		],
-		"exmlPublishPolicy": "content"
+		"exmlPublishPolicy": "commonjs"
 	},
 	"modules": [
 		{
 			"name": "egret"
 		},
 		{
-			"name": "res"
-		},
-		{
-			"name": "game"
-		},
-		{
 			"name": "eui"
+		},
+		{
+			"name": "res"
 		},
 		{
 			"name": "tween"
 		},
 		{
-			"name": "dragonbones"
+			"name": "dragonBones"
 		},
 		{
-			"name": "promise",
-			"path": "./libs/promise"
+			"name": "game"
+		},
+		{
+			"name": "promise"
 		}
 	]
 }

@@ -4,8 +4,8 @@
  *
  */
 
-module common {
-    export class StatUtil {
+module utils {
+    export class Stat {
 
         static trackView(view: string): void {
             if (window['neteaseAnalysis']) {

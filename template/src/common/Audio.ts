@@ -21,7 +21,7 @@ module common {
 
         constructor() {
             super();
-
+            
             this.isWeixin = /micromessenger/ig.test(navigator.userAgent);
             //微信兼容
             if (this.isWeixin && !window['wx']) {
@@ -84,3 +84,5 @@ module common {
         }
     }
 }
+
+window['common']['Audio'] = common.Audio

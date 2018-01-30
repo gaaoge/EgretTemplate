@@ -19,12 +19,19 @@ module common {
         }
 
         public show(): void {
-            window['newsappShare'].show(() => {
+            if (window['newsappShare']) {
+                window['newsappShare'].show(() => {
+                    this.fadeIn();
+                    setTimeout(() => {
+                        this.fadeOut();
+                    }, 2000);
+                })
+            } else {
                 this.fadeIn();
                 setTimeout(() => {
                     this.fadeOut();
                 }, 2000);
-            })
+            }
         }
 
         private fadeIn(): void {
@@ -43,3 +50,5 @@ module common {
         }
     }
 }
+
+window['common']['Share'] = common.Share

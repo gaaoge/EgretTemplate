@@ -1,8 +1,0 @@
-declare module app{
-	class HomeSkin extends eui.Skin{
-	}
-}
-declare module common{
-	class ShareSkin extends eui.Skin{
-	}
-}

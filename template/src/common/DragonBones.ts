@@ -56,3 +56,5 @@ module common {
         }
     }
 }
+
+window['common']['DragonBones'] = common.DragonBones

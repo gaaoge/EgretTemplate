@@ -19,18 +19,22 @@ class Router {
     }
 
     public push(sceneClass: any, params?: any): void {
-        history.pushState({
-            sceneClassName: egret.getQualifiedClassName(sceneClass),
-            params: params
-        }, document.title, location.href);
+        if (window.history) {
+            window.history.pushState({
+                sceneClassName: egret.getQualifiedClassName(sceneClass),
+                params: params
+            }, document.title, location.href);
+        }
         this.changeScene(sceneClass, params);
     }
 
     public replace(sceneClass: any, params?: any): void {
-        history.replaceState({
-            sceneClassName: egret.getQualifiedClassName(sceneClass),
-            params: params
-        }, document.title, location.href);
+        if (window.history) {
+            window.history.replaceState({
+                sceneClassName: egret.getQualifiedClassName(sceneClass),
+                params: params
+            }, document.title, location.href);
+        }
         this.changeScene(sceneClass, params);
     }
 

@@ -68,3 +68,5 @@ module common {
         }
     }
 }
+
+window['common']['Preload'] = common.Preload
