@@ -19,8 +19,8 @@ module common {
         }
 
         public show(): void {
-            if (window['newsappShare']) {
-                window['newsappShare'].show(() => {
+            if (window['NewsappShare']) {
+                window['NewsappShare'].show(() => {
                     this.fadeIn();
                     setTimeout(() => {
                         this.fadeOut();

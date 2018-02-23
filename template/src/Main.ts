@@ -59,8 +59,8 @@ class Main extends eui.UILayer {
 
         new Router(this).replace(app.Home);
 
-        if (window['newsappShare']) {
-            window['newsappShare'].config({
+        if (window['NewsappShare']) {
+            window['NewsappShare'].config({
                 title: '分享标题',
                 desc: '分享描述',
                 imgUrl: 'resource/statics/share-icon.png',
