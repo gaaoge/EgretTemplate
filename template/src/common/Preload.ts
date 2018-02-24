@@ -65,6 +65,7 @@ module common {
             RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onProgress, this);
             RES.removeEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onError, this);
             RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onComplete, this);
+            this.dispatchEventWith(egret.Event.COMPLETE);
         }
     }
 }
