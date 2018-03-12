@@ -16,20 +16,11 @@ module common {
 
         private sound: egret.Sound;
         private soundChannel: egret.SoundChannel;
-        private isWeixin: boolean;
-        private isPlayed: boolean = false;
 
-        constructor() {
-            super();
-            
-            this.isWeixin = /micromessenger/ig.test(navigator.userAgent);
-            //微信兼容
-            if (this.isWeixin && !window['wx']) {
-                var script = document.createElement('script');
-                script.src = '//res.wx.qq.com/open/js/jweixin-1.0.0.js';
-                document.body.appendChild(script);
-            }
-        }
+        //微信兼容
+        private isWeixin: boolean = /micromessenger/ig.test(navigator.userAgent);
+        private isMiniGame: boolean = /MiniGame/ig.test(navigator.userAgent);
+        private isWeixinHandled: boolean = false;
 
         protected createChildren(): void {
             super.createChildren();
@@ -63,11 +54,9 @@ module common {
             if (Audio.muted) return;
 
             if (this.sound) {
-                if (this.isWeixin && !this.isPlayed) {
-                    window['wx'].config({});
-                    window['wx'].ready(() => {
+                if (this.isWeixin && !this.isMiniGame) {
+                    this.weixinHandler(() => {
                         this.soundChannel = this.sound.play(startTime, loops);
-                        this.isPlayed = true;
                     });
                 } else {
                     this.soundChannel = this.sound.play(startTime, loops);
@@ -80,6 +69,45 @@ module common {
             if (this.soundChannel) {
                 this.soundChannel.stop();
                 this.soundChannel = null;
+            }
+        }
+
+        private loadScript(url, callback): void {
+            let script = document.createElement('script');
+            script.src = url;
+            script.onload = () => {
+                callback && callback.call(this);
+                script.parentNode.removeChild(script);
+            }
+            let target = document.getElementsByTagName('script')[0];
+            target.parentNode.insertBefore(script, target);
+        }
+
+        private weixinHandler(play: any): void {
+            if (!this.isWeixinHandled) {
+                let callback = () => {
+                    window['wx'].config({
+                        jsApiList: [
+                            'onMenuShareTimeline',
+                            'onMenuShareAppMessage',
+                            'onMenuShareQQ',
+                            'onMenuShareWeibo',
+                            'onMenuShareQZone'
+                        ]
+                    });
+                    window['wx'].ready(() => {
+                        this.isWeixinHandled = true;
+                        play.call(this);
+                    });
+                }
+
+                if (!window['wx']) {
+                    this.loadScript('//res.wx.qq.com/open/js/jweixin-1.3.0.js', callback);
+                } else {
+                    callback();
+                }
+            } else {
+                play.call(this);
             }
         }
     }

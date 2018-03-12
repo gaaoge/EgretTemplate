@@ -8,6 +8,7 @@ module common {
     export class Preload extends eui.Component {
 
         public groupName: string = 'preload';
+        public priority: number = 0;
 
         private progress: eui.Label;
 
@@ -38,7 +39,8 @@ module common {
             RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onProgress, this);
             RES.addEventListener(RES.ResourceEvent.GROUP_LOAD_ERROR, this.onError, this);
             RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onComplete, this);
-            RES.loadGroup(this.groupName);
+            RES.setMaxLoadingThread(5);
+            RES.loadGroup(this.groupName, this.priority);
         }
 
         private onProgress(e: RES.ResourceEvent): void {
